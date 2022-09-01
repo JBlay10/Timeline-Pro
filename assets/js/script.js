@@ -1,6 +1,6 @@
 // Header date
 function headerDate(){
-    var activeDate = moment().format('MMM D, YYYY')
+    var activeDate = moment().format('LLLL')
     $("#currentDay").text(activeDate);
 }
 headerDate();
@@ -11,7 +11,7 @@ const hours = moment().format("h");
 
 // Loop for the time
 for(var i = 7; i < 18; i++) {
-    var timeFrame = initialHour.add(1, "hour").format("h:mma");
+    var timeFrame = initialHour.add(1, "hour").format("ha");
     var activeTime;
 
     // if statement for Schedule current time
@@ -26,15 +26,18 @@ for(var i = 7; i < 18; i++) {
     // Creates divs for row and colums
     const addDivs =
 
-        `<div class="row" id="hours-${i}>
+        //if id has a closing(") or change it to class body breaks 
+        `<container class="row" id="hour-${i}>
             <div class="col-2"></div>
             <div class="hour w-50 p-3 col-1"> ${timeFrame}</div>
-            <input class="userInput w-75 p-3 col-5 ${activeTime} hours-${i}"></input>
-            <button class="saveBtn w-25 p-3 col-1 fas fa-save fa-2x"></button>
+            <textarea class="description w-50 p-3 col-9 ${activeTime} hour-${i}"></textarea>
+            <button class="saveBtn w-25 p-4 col-1 fas fa-save fa-2x"></button>
             <div class="col-2"></div>
-        </div>`
+        </container>
+        <p class="description"></p>`
         ;
-        $(".container").append(addDivs);
+
+    $(".container").append(addDivs);
 }
 
 
