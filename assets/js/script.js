@@ -7,7 +7,7 @@ headerDate();
 
 // Variables for defualt settings
 const initialHour = moment().startOf("day").add(6, "hour");
-const hours = moment().formart("h");
+const hours = moment().format("h");
 
 // Loop for the time
 for(var i = 7; i < 18; i++) {
@@ -20,7 +20,7 @@ for(var i = 7; i < 18; i++) {
     } else if (hours < i) {
         activeTime = "future"
     } else {
-        activeTime = "padt"
+        activeTime = "past"
     }
 
     // Creates divs for row and colums
