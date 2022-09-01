@@ -6,11 +6,11 @@ function headerDate(){
 headerDate();
 
 // Variables for defualt settings
-const initialHour = moment().startOf("day").add(6, "hour");
+const initialHour = moment().startOf("day").add(7, "hour");
 const hours = moment().format("h");
 
 // Loop for the time
-for(var i = 7; i < 18; i++) {
+for(var i = 8; i < 18; i++) {
     var timeFrame = initialHour.add(1, "hour").format("ha");
     var activeTime;
 
@@ -41,4 +41,14 @@ for(var i = 7; i < 18; i++) {
 }
 
 
+// creates an event to save user input to local storage
+$(".saveBtn").on("click", function () {
+    var userInput = $(this).siblings(".description").val();
+    var time = $(this).parent().attr("id");
 
+    localStorage.setItem(time, userInput)
+})
+
+for(var i = 8; i < 18; i++) {
+    $(`hour-${i}`).val(localStorage.getItem(`hour-${i}`))
+}
